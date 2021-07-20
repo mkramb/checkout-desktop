@@ -9,12 +9,8 @@ env:
   CI: true
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [macos-10.15, windows-2019]
+  build-mac:
+    runs-on: macos-10.15
 
     steps:
       - name: Checkout
@@ -32,4 +28,25 @@ jobs:
         run: yarn build
 
       - name: Release
-        run: yarn release
+        run: yarn release --mac --x64
+
+  build-windows:
+    runs-on: windows-2019
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: Install
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+
+      - name: Release
+        run: yarn release --win --x64

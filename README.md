@@ -43,7 +43,7 @@ This will produce DMG (Mac) and NSIS (Windows) under release folder:
 
 ```
 yarn build
-yarn release
+yarn release --mac --win --x64
 ```
 
 ## Installation

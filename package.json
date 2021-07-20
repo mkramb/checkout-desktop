@@ -1,0 +1,45 @@
+{
+  "name": "parent",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Checkout.com Desktop Application",
+  "author": "Mitja Kramberger <mitja.kramberger@gmail.com>",
+  "main": "dist/main.js",
+  "workspaces": [
+    "packages/**"
+  ],
+  "scripts": {
+    "build": "cross-env NODE_ENV=production lerna run build --stream && copyfiles -f -a 'packages/**/dist/**' ./dist",
+    "release": "rimraf release && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder",
+    "clean": "lerna clean --yes && rimraf node_modules",
+    "prettier": "lerna run prettier --stream",
+    "start": "lerna run start --stream",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "cross-env": "^7.0.3",
+    "electron-builder": "^22.11.7",
+    "lerna": "^4.0.0",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2"
+  },
+  "build": {
+    "asar": true,
+    "publish": null,
+    "productName": "Checkout.com",
+    "appId": "com.checkout.desktop",
+    "mac": {
+      "target": [
+        "dmg"
+      ]
+    },
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*"
+    ]
+  }
+}

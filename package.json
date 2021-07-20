@@ -26,8 +26,9 @@
   },
   "build": {
     "asar": true,
+    "extends": null,
     "publish": null,
-    "productName": "Checkout.com",
+    "productName": "checkout",
     "appId": "com.checkout.desktop",
     "mac": {
       "target": "dmg"
@@ -40,7 +41,7 @@
       "output": "release"
     },
     "files": [
-      "./dist/**/*"
+      "dist/**/*"
     ]
   }
 }

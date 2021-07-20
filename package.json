@@ -30,9 +30,10 @@
     "productName": "Checkout.com",
     "appId": "com.checkout.desktop",
     "mac": {
-      "target": [
-        "dmg"
-      ]
+      "target": "dmg"
+    },
+    "win": {
+      "target": "msi"
     },
     "directories": {
       "buildResources": "resources",

@@ -25,6 +25,7 @@
     "rimraf": "^3.0.2"
   },
   "build": {
+    "asar": false,
     "publish": null,
     "productName": "checkout",
     "appId": "com.checkout.desktop",

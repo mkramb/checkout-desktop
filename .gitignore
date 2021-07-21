@@ -5,6 +5,13 @@ node_modules
 # OSX
 .DS_Store
 
-# App packaged
-dist
+# dist
+/main.js*
+/renderer.js*
+/index.html
+
+# package
 release
+
+# dist
+dist

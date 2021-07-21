@@ -9,8 +9,8 @@
     "packages/**"
   ],
   "scripts": {
-    "build": "rimraf dist && cross-env NODE_ENV=production lerna run build --stream && copyfiles -f -a 'packages/**/dist/**' ./dist",
-    "release": "rimraf release && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder",
+    "build": "cross-env NODE_ENV=production lerna run build --stream && copyfiles -f -a 'packages/**/dist/**' .",
+    "release": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder",
     "clean": "lerna clean --yes && rimraf node_modules",
     "prettier": "lerna run prettier --stream",
     "start": "lerna run start --stream",
@@ -25,7 +25,6 @@
     "rimraf": "^3.0.2"
   },
   "build": {
-    "asar": true,
     "publish": null,
     "productName": "checkout",
     "appId": "com.checkout.desktop",
@@ -35,37 +34,10 @@
       "output": "release"
     },
     "files": [
-      {
-        "from": "dist",
-        "to": ".",
-        "filter": ["**/*"]
-      },
-      {
-        "from": ".",
-        "to": ".",
-        "filter": ["package.json"]
-      }
+      "index.html",
+      "renderer.js",
+      "main.js"
     ],
-    "dmg": {
-      "background": null,
-      "backgroundColor": "#ffffff",
-      "window": {
-        "width": "400",
-        "height": "300"
-      },
-      "contents": [
-        {
-          "x": 100,
-          "y": 100
-        },
-        {
-          "x": 300,
-          "y": 100,
-          "type": "link",
-          "path": "/Applications"
-        }
-      ]
-    },
     "mac": {
       "target": "dmg",
       "category": "public.app-category.utilities"
